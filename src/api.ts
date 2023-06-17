@@ -16,7 +16,7 @@ const cos = new COS({
 });
 const baseInfo = {
   Bucket: 'app-1301154847',
-  Region: 'ap-shanghai',
+  Region: 'ap-singapore',
   Key: 'activation-code.json',
 };
 const initData: ActivationCodeData[] = [{ code: getCode(), count: 100 }];
