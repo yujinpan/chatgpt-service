@@ -1,5 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 import COS from 'cos-nodejs-sdk-v5';
 import * as process from 'process';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
 
 export type ActivationCodeData = {
   code: string;
@@ -16,8 +20,8 @@ const baseInfo = {
   Key: 'activation-code.json',
 };
 const initData: ActivationCodeData[] = [
-  { code: 'hello', count: 100 },
-  { code: 'world', count: 100 },
+  { code: getCode(), count: 100 },
+  { code: getCode(), count: 100 },
 ];
 
 function initActivationCode() {
@@ -79,4 +83,23 @@ export function saveActivationCodeItem(data) {
 
     return saveActivationCode(res);
   });
+}
+
+export function generateActivationCode(count = 100) {
+  return getActivationCode().then((res) => {
+    const data = {
+      code: getCode(),
+      count,
+    };
+
+    res.push(data);
+
+    return saveActivationCode(res).then(() => data);
+  });
+}
+
+function getCode() {
+  return Buffer.from(eval(process.env.ACTIVATION_KEY) + Date.now()).toString(
+    'base64',
+  );
 }

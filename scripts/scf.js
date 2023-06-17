@@ -1,4 +1,4 @@
-const { writeFileSync } = require('fs');
+const { writeFileSync, cpSync } = require('fs');
 const { resolve } = require('path');
 
 const pkg = require('../package.json');
@@ -7,6 +7,7 @@ const outDir = resolve(__dirname, '../scf');
 
 writePackageFile();
 writeScfBootstrap();
+cpSync(resolve(__dirname, '../.env.local'), resolve(outDir, '.env'));
 
 function writePackageFile() {
   writeFileSync(
