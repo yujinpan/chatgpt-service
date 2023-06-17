@@ -19,10 +19,7 @@ const baseInfo = {
   Region: 'ap-shanghai',
   Key: 'activation-code.json',
 };
-const initData: ActivationCodeData[] = [
-  { code: getCode(), count: 100 },
-  { code: getCode(), count: 100 },
-];
+const initData: ActivationCodeData[] = [{ code: getCode(), count: 100 }];
 
 function initActivationCode() {
   return saveActivationCode(initData);
