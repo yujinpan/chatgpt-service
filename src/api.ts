@@ -99,7 +99,7 @@ export function generateActivationCode(count = 100) {
 }
 
 function getCode() {
-  return Buffer.from(eval(process.env.ACTIVATION_KEY) + Date.now()).toString(
-    'base64',
-  );
+  return Buffer.from(
+    eval(process.env.ACTIVATION_KEY) + Date.now() + '',
+  ).toString('base64');
 }
