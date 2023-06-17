@@ -7,8 +7,9 @@
     "publish:patch": "npm version patch",
     "version": "npm run build",
     "postversion": "git push --all && git push --tags",
-    "build": "rollupx && node scripts/scf.js && npm run zip",
+    "build": "rollupx && node scripts/scf.js && npm run scf-install && npm run zip",
     "test": "jest",
+    "scf-install": "cd scf && npm i",
     "zip": "fs-ops zip scf -o=scf/scf.zip"
   },
   "author": "yujinpan",
