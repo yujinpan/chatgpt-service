@@ -7,9 +7,9 @@ const port = 9000;
 
 app.use(express.json());
 
-app.post('/', activationCodeValidate);
+app.post('/activationCode', activationCodeValidate);
 
-app.post('/generate', activationCodeGenerate);
+app.post('/activationCode/generate', activationCodeGenerate);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
