@@ -4,3 +4,6 @@ node_modules
 types
 .vitepress/cache
 .vitepress/dist
+
+*.local
+scf
