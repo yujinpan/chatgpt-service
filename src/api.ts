@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import COS from 'cos-nodejs-sdk-v5';
+import { createHmac } from 'crypto';
 import * as process from 'process';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -96,7 +97,7 @@ export function generateActivationCode(count = 100) {
 }
 
 function getCode() {
-  return Buffer.from(
-    eval(process.env.ACTIVATION_KEY) + Date.now() + '',
-  ).toString('base64');
+  return createHmac('sha256', process.env.ACTIVATION_KEY)
+    .update(String(Date.now()))
+    .digest('base64');
 }
