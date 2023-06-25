@@ -2,19 +2,19 @@
 
 ## API
 
-- `/` activation code validate
+- `/activationCode` activation code validate
 
 ```ts
-request.post('/', {
+request.post('/activationCode', {
   code: '123'
 });
 ```
 
-- `/generate` generate new activation code
+- `/activationCode/generate` generate new activation code
 
 ```ts
-request.post('/generate', {
+request.post('/activationCode/generate', {
   password: '123',
-  count: '123'
+  count: 123
 });
 ```
